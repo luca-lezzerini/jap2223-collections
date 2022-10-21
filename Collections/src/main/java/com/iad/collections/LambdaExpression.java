@@ -2,6 +2,8 @@
  */
 package com.iad.collections;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +43,40 @@ public class LambdaExpression {
             }
         });
 
+        students.stream()
+                .filter(s -> s.getGender().equalsIgnoreCase("F"))
+                .filter(t -> t.getAge() < 30)
+                .forEach(z -> System.out.println(z));
+
+        students.stream()
+                .filter(s -> s.getAge() > 45)
+                .filter(s -> s.getAge() < 90)
+                .filter(s -> s.getYearlyIncome() > 40_000)
+                .forEach(s -> System.out.println(s));
+
+        List<Integer> li = new ArrayList<>(500_000_000);
+        for (int i = 0; i < 500_000_000; i++) {
+            li.add(i);
+        }
+
+        Instant i1 = Instant.now();
+        li.stream()
+                .filter(s -> s % 2 == 0)
+                .forEach(s -> {
+                    double x = s * 2;
+                });
+        Instant e1 = Instant.now();
+        Duration d1 = Duration.between(i1, e1);
+        Instant i2 = Instant.now();
+        li.parallelStream()
+                .filter(s -> s % 2 == 0)
+                .forEach(s -> {
+                    double x = s * 2;
+                });
+        Instant e2 = Instant.now();
+        Duration d2 = Duration.between(i2, e2);
+        System.out.println("Stream " + d1.toMillis());
+        System.out.println("Parallel Stream " + d2.toMillis());
     }
 
 }
