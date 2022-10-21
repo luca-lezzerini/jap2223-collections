@@ -54,8 +54,8 @@ public class LambdaExpression {
                 .filter(s -> s.getYearlyIncome() > 40_000)
                 .forEach(s -> System.out.println(s));
 
-        List<Integer> li = new ArrayList<>(500_000_000);
-        for (int i = 0; i < 500_000_000; i++) {
+        List<Integer> li = new ArrayList<>(200_000_000);
+        for (int i = 0; i < 200_000_000; i++) {
             li.add(i);
         }
 
