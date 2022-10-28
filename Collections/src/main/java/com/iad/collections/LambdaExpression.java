@@ -43,6 +43,14 @@ public class LambdaExpression {
             }
         });
 
+        SmarterLibrary.selectPersons(students,
+                p -> p.getYearlyIncome() > 20_000
+        );
+        
+        SmarterLibrary.selectPersons(students,
+                p -> p.getGender().equalsIgnoreCase("M")
+        );
+
         students.stream()
                 .filter(s -> s.getGender().equalsIgnoreCase("F"))
                 .filter(t -> t.getAge() < 30)
